@@ -43,7 +43,7 @@ gread = App("176546272754384", "9ce4f9725d90f6a3090903e806d731fa")
 @set_renderers(JSONRenderer)
 def notes():
     """
-    List or create notes.
+    List or create not es.
     """
     if request.method == 'POST':
         dataId = request.form['id']
