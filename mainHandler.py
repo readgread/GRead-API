@@ -15,7 +15,7 @@ from appData import *
 
 
 
-
+recent = {}
 # scraping the most recent data
 
 
@@ -32,10 +32,12 @@ def getData (page_id, access_token):
     # retrieve data
     req = urllib2.Request(url)
     response = urllib2.urlopen(req)
+    recent = {}
     data = json.loads(response.read())
+    recent = json.dumps(data, indent =4, sort_keys=True)
 
     # printing the scraped data
-    return json.dumps(data, indent=4, sort_keys=True)
+    return recent
 
 
         # function call to get the data of next page
@@ -43,6 +45,13 @@ def getData (page_id, access_token):
 
         # function call to get the data of previous page
         # prev_page()
+
+def next_page():
+    next = recent['paging']['next']
+    req = urllib2.Request(next)
+    response = urllib2.urlopen(req)
+    data = json.loads(response.read())
+    return data;
 
 
 
